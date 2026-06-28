@@ -1,0 +1,6 @@
+requests
+wikipedia-api
+beautifulsoup4
+pypdf
+langdetect
+transformers
