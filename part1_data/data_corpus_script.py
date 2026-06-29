@@ -64,8 +64,8 @@ WEB_URLS = [
     "https://www.csselectronics.com/pages/uds-protocol-tutorial-unified-diagnostic-services",   
     # German source
     "https://de.wikipedia.org/wiki/Controller_Area_Network",
-    # PDF
-    "https://mediatum.ub.tum.de/doc/1638880/mth1hqzs56h0qnkny6syzdham.Disseration_Johannes_Eder_Bib.pdf"
+    # PDFs
+    "https://mediatum.ub.tum.de/doc/1638880/mth1hqzs56h0qnkny6syzdham.Disseration_Johannes_Eder_Bib.pdf",
 ]
 
 SEED_DOIS = [
@@ -144,7 +144,7 @@ def fetch_seed_pdfs(seed_dois, output_dir): # download the seed papers themselve
         if not url:
             print(f"seed {doi}: no OA PDF"); continue
         try:
-            r = requests.get(url, headers={"User-Agent": "Mozilla/5.0"}, timeout=15)
+            r = requests.get(url, headers={"User-Agent": "Mozilla/5.0"}, timeout=30)
             if r.status_code == 200 and r.content[:5] == b"%PDF-":
                 (output_dir / f"seed_{downloaded}.pdf").write_bytes(r.content); downloaded += 1
             else:

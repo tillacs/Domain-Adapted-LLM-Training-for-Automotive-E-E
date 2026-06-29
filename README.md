@@ -86,6 +86,9 @@ Kaggle then mounts it under /kaggle/input/... Set that path in the config:
 CPT_MODEL_PATH = "/kaggle/input/<cpt-notebook-slug>/cpt_merged"
 ```
 
+## AI Assistance
+
+Claude Opus 4.8 (Anthropic) was used as a development assistant for research, debugging and scaling the data pipeline;
 
 ## Repository Structure
 

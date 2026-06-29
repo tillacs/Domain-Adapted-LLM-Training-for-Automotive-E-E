@@ -2,77 +2,77 @@ source,words,stop_ratio,non_ascii,ee_keywords,status
 seed_2.pdf,16033,0.278,0.0014,19,passed
 Radar.txt,10360,0.2743,0.0005,4,passed
 seed_3.pdf,5699,0.2727,0.0059,8,passed
-Engine control unit.txt,466,0.2468,0.0003,5,passed
+Engine control unit.txt,466,0.2468,0.0003,4,passed
 Over-the-air update.txt,1600,0.2725,0.0001,4,passed
-DeviceNet.txt,988,0.248,0.0005,4,passed
-mediatum_ub_tum_de_doc_1638880_mth1hqzs56h0qnkny6syzdham_Dis.pdf,43007,0.2338,0.0016,16,passed
+DeviceNet.txt,988,0.248,0.0005,3,passed
+mediatum_ub_tum_de_doc_1638880_mth1hqzs56h0qnkny6syzdham_Dis.pdf,43007,0.2338,0.0016,14,passed
 Lidar.txt,9033,0.2838,0.0005,3,passed
-seed_1.pdf,6602,0.2322,0.0061,10,passed
-Electronic control unit.txt,700,0.2557,0.0015,9,passed
-seed_0.pdf,7667,0.2834,0.0006,4,passed
+seed_1.pdf,6602,0.2322,0.0061,9,passed
+Electronic control unit.txt,700,0.2557,0.0015,7,passed
+seed_0.pdf,7667,0.2834,0.0006,5,passed
 On-board diagnostics.txt,5434,0.2451,0.0018,10,passed
 www_kvaser_com_about-can_can-standards_.txt,439,0.1663,0.0094,5,passed
-CANopen.txt,2795,0.3145,0.0003,5,passed
+CANopen.txt,2795,0.3145,0.0003,4,passed
 Electronic stability control.txt,4355,0.2684,0.0004,5,passed
 seed_4.pdf,12077,0.2549,0.0069,9,passed
-CAN bus.txt,7995,0.2777,0.0006,19,passed
+CAN bus.txt,7995,0.2777,0.0006,18,passed
 ISO 26262.txt,2244,0.291,0.0007,4,passed
 Body control module.txt,103,0.2718,0.0015,3,passed
 www_kvaser_com_about-can_higher-layer-protocols_j1939-introd.txt,3469,0.2519,0.002,6,passed
 Self-driving car.txt,7386,0.2558,0.0003,8,passed
-AUTOSAR.txt,1944,0.2618,0.0005,11,passed
+AUTOSAR.txt,1944,0.2618,0.0005,9,passed
 Sensor fusion.txt,1540,0.224,0.0016,0,not_relevant
 Tire-pressure monitoring system.txt,2879,0.2702,0.0007,4,passed
-OBD-II PIDs.txt,2417,0.2553,0.0003,8,passed
-XCP (protocol).txt,498,0.3072,0.0006,5,passed
-Transmission control unit.txt,1961,0.2988,0.0,5,passed
+OBD-II PIDs.txt,2417,0.2553,0.0003,7,passed
+XCP (protocol).txt,498,0.3072,0.0006,4,passed
+Transmission control unit.txt,1961,0.2988,0.0,4,passed
 Lane departure warning system.txt,2477,0.2733,0.0002,3,passed
 Brake-by-wire.txt,2572,0.3064,0.0002,5,passed
 Anti-lock braking system.txt,6010,0.2955,0.0002,3,passed
 Automotive Safety Integrity Level.txt,1700,0.2912,0.0006,5,passed
-MOST Bus.txt,1135,0.2344,0.0003,6,passed
+MOST Bus.txt,1135,0.2344,0.0003,5,passed
 CAN FD.txt,1477,0.2532,0.001,9,passed
-www_csselectronics_com_pages_lin-bus-protocol-intro-basics.txt,4401,0.2443,0.0001,14,passed
+www_csselectronics_com_pages_lin-bus-protocol-intro-basics.txt,4401,0.2443,0.0001,13,passed
 Time-Triggered Protocol.txt,1616,0.2853,0.0007,3,passed
 www_kvaser_com_can-protocol-tutorial_.txt,7318,0.2595,0.0042,8,passed
 Advanced driver-assistance system.txt,5565,0.2726,0.0002,7,passed
-www_siemens_com_en-us_technology_autosar_.txt,768,0.2604,0.0016,12,passed
-www_csselectronics_com_pages_uds-protocol-tutorial-unified-d.txt,8608,0.2629,0.0,17,passed
-www_csselectronics_com_pages_j1939-explained-simple-intro-tu.txt,4320,0.234,0.0002,13,passed
+www_siemens_com_en-us_technology_autosar_.txt,768,0.2604,0.0016,10,passed
+www_csselectronics_com_pages_uds-protocol-tutorial-unified-d.txt,8608,0.2629,0.0,15,passed
+www_csselectronics_com_pages_j1939-explained-simple-intro-tu.txt,4320,0.234,0.0002,12,passed
 Drive by wire.txt,1090,0.2936,0.0004,4,passed
-ref_6.pdf,17381,0.2422,0.009,4,passed
-www_csselectronics_com_pages_can-bus-errors-intro-tutorial.txt,5635,0.2626,0.0,10,passed
+ref_6.pdf,8671,0.2544,0.006,2,not_relevant
+www_csselectronics_com_pages_can-bus-errors-intro-tutorial.txt,5635,0.2626,0.0,9,passed
 Powertrain control module.txt,304,0.2303,0.0005,4,passed
-www_csselectronics_com_pages_can-fd-flexible-data-rate-intro.txt,3042,0.2137,0.0001,15,passed
-ref_5.pdf,10858,0.274,0.0148,1,not_relevant
+www_csselectronics_com_pages_can-fd-flexible-data-rate-intro.txt,3042,0.2137,0.0001,14,passed
+ref_5.pdf,3442,0.2618,0.0029,4,passed
 Time-Sensitive Networking.txt,6129,0.2721,0.0004,5,passed
-ref_4.pdf,2252,0.2926,0.0121,2,not_relevant
-Unified Diagnostic Services.txt,419,0.2482,0.0004,10,passed
-Vehicle bus.txt,950,0.2516,0.0019,10,passed
-ref_0.pdf,4972,0.2635,0.0053,0,not_relevant
-www_ni_com_en_shop_seamlessly-connect-to-third-party-devices.txt,3276,0.2839,0.0055,10,passed
-www_csselectronics_com_pages_can-dbc-file-database-intro.txt,5292,0.2184,0.0,13,passed
-Adaptive cruise control.txt,2745,0.2244,0.0004,4,passed
-www_csselectronics_com_pages_can-bus-simple-intro-tutorial.txt,5254,0.2227,0.0,18,passed
-Connected car.txt,3131,0.2884,0.0001,12,passed
-ref_1.pdf,8671,0.2544,0.006,2,not_relevant
+ref_4.pdf,4049,0.2662,0.0013,4,passed
+Unified Diagnostic Services.txt,419,0.2482,0.0004,8,passed
+Vehicle bus.txt,950,0.2516,0.0019,8,passed
+ref_0.pdf,17381,0.2422,0.009,3,passed
+www_ni_com_en_shop_seamlessly-connect-to-third-party-devices.txt,3276,0.2839,0.0055,9,passed
+www_csselectronics_com_pages_can-dbc-file-database-intro.txt,5292,0.2184,0.0,11,passed
+Adaptive cruise control.txt,2745,0.2244,0.0004,3,passed
+www_csselectronics_com_pages_can-bus-simple-intro-tutorial.txt,5254,0.2227,0.0,17,passed
+Connected car.txt,3131,0.2884,0.0001,10,passed
+ref_1.pdf,4972,0.2635,0.0053,0,not_relevant
 Dedicated short-range communications.txt,511,0.1761,0.0022,3,passed
-ref_3.pdf,3442,0.2618,0.0029,4,passed
-ref_2.pdf,4049,0.2662,0.0013,4,passed
-Local Interconnect Network.txt,2796,0.2704,0.0004,4,passed
-Functional safety.txt,2077,0.2701,0.0011,6,passed
-SAE J1939.txt,539,0.2542,0.0,9,passed
+ref_3.pdf,10858,0.274,0.0148,1,not_relevant
+ref_2.pdf,2252,0.2926,0.0121,2,not_relevant
+Local Interconnect Network.txt,2796,0.2704,0.0004,3,passed
+Functional safety.txt,2077,0.2701,0.0011,5,passed
+SAE J1939.txt,539,0.2542,0.0,8,passed
 Audio Video Bridging.txt,1465,0.2328,0.0003,3,passed
 Hardware security module.txt,1408,0.2486,0.0003,6,passed
-ISO 15765-2.txt,942,0.2728,0.0005,6,passed
+ISO 15765-2.txt,942,0.2728,0.0005,5,passed
 In-car entertainment.txt,596,0.255,0.0003,4,passed
-Telematics.txt,2193,0.2549,0.0006,9,passed
+Telematics.txt,2193,0.2549,0.0006,8,passed
 ECall.txt,1022,0.3043,0.0005,3,passed
-www_csselectronics_com_pages_obd2-explained-simple-intro.txt,4659,0.232,0.0,11,passed
+www_csselectronics_com_pages_obd2-explained-simple-intro.txt,4659,0.232,0.0,9,passed
 FlexRay.txt,1160,0.2328,0.004,6,passed
-www_csselectronics_com_pages_obd2-pid-table-on-board-diagnos.txt,3429,0.0645,0.0001,4,low_prose
-Keyword Protocol 2000.txt,296,0.25,0.001,5,passed
-Vehicle-to-everything.txt,3198,0.2695,0.0002,5,passed
+www_csselectronics_com_pages_obd2-pid-table-on-board-diagnos.txt,3429,0.0645,0.0001,3,low_prose
+Keyword Protocol 2000.txt,296,0.25,0.001,4,passed
+Vehicle-to-everything.txt,3198,0.2695,0.0002,4,passed
 Steer-by-wire.txt,758,0.2704,0.0004,2,not_relevant
 de_wikipedia_org_wiki_Controller_Area_Network.txt,4926,0.0183,0.0116,11,not_english
 Vehicular communication systems.txt,1457,0.2574,0.0001,4,passed
