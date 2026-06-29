@@ -88,21 +88,21 @@ Running the pipeline end-to-end produced the following corpus:
 
 | Stage | Documents |
 |---|---|
-| Raw collected (≈49 Wikipedia + 15 web pages + 5 seed PDFs + 7 citation-crawl PDFs) | 76 |
-| After filtering (language, quality, relevance) | 69 |
-| After deduplication | 69 |
+| Raw collected (≈50 Wikipedia + 17 web sources + 5 seed papers + 7 citation-crawl PDFs) | 79 |
+| After filtering (language, quality, relevance) | 71 |
+| After deduplication | 71 |
 
-Seven documents were filtered, demonstrating the filters:
 
-- **Relevance** removed 5 documents: *Sensor fusion* (a general data-fusion article with no E/E terminology) and four off-domain reference PDFs.
-- **Low-prose** removed the OBD-II PID table page (stop-word ratio 0.06, below the 0.10 threshold).
-- **Language** removed a German Wikipedia page on CAN, deliberately included to demonstrate the filter.
+Eight documents were filtered:
+- **Relevance** removed 6: *Sensor fusion* (a a general data-fusion article with no E/E terminology) plus five off-domain documents (mostly ML/robotics references pulled in by the citation crawl).
+- **Low-prose** removed the OBD-II PID table page.
+- **Language** removed the German CAN page.
 
 Deduplication found no exact duplicates this run. The word-count, non-ASCII and length filters did not trigger.
 
-The 69 unique documents were chunked into 213 sequences of 2048 tokens (367,374 tokens total), split 191 train / 22 validation.
+The 71 unique documents were chunked into 245 sequences of 2048 tokens (429,855 tokens total), split 220 train / 25 validation.
 
-A per-document breakdown (word count, stop-word ratio, non-ASCII ratio, E/E-keyword count, filter status) is written to `corpus_stats.csv`, and rejected documents are moved to a `filtered/` folder for inspection.
+A per-document breakdown (word count, stop-word ratio, non-ASCII ratio, E/E-keyword count, filter status) is written to `corpus_stats.csv`, and rejected documents are moved to a `filtered/` folder.
 
 **Citation crawl yield.** Of 130 unique references resolved across the five seeds, 19 had a direct open-access PDF link and only 7 returned an actual PDF file. This demonstrates the mechanism while showing it does not scale in the toy setup.
 

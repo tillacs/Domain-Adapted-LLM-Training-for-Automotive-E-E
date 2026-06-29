@@ -5,6 +5,7 @@ seed_3.pdf,5699,0.2727,0.0059,8,passed
 Engine control unit.txt,466,0.2468,0.0003,5,passed
 Over-the-air update.txt,1600,0.2725,0.0001,4,passed
 DeviceNet.txt,988,0.248,0.0005,4,passed
+mediatum_ub_tum_de_doc_1638880_mth1hqzs56h0qnkny6syzdham_Dis.pdf,43007,0.2338,0.0016,16,passed
 Lidar.txt,9033,0.2838,0.0005,3,passed
 seed_1.pdf,6602,0.2322,0.0061,10,passed
 Electronic control unit.txt,700,0.2557,0.0015,9,passed
@@ -35,10 +36,11 @@ www_csselectronics_com_pages_lin-bus-protocol-intro-basics.txt,4401,0.2443,0.000
 Time-Triggered Protocol.txt,1616,0.2853,0.0007,3,passed
 www_kvaser_com_can-protocol-tutorial_.txt,7318,0.2595,0.0042,8,passed
 Advanced driver-assistance system.txt,5565,0.2726,0.0002,7,passed
+www_siemens_com_en-us_technology_autosar_.txt,768,0.2604,0.0016,12,passed
 www_csselectronics_com_pages_uds-protocol-tutorial-unified-d.txt,8608,0.2629,0.0,17,passed
 www_csselectronics_com_pages_j1939-explained-simple-intro-tu.txt,4320,0.234,0.0002,13,passed
 Drive by wire.txt,1090,0.2936,0.0004,4,passed
-ref_6.pdf,4972,0.2635,0.0053,0,not_relevant
+ref_6.pdf,17381,0.2422,0.009,4,passed
 www_csselectronics_com_pages_can-bus-errors-intro-tutorial.txt,5635,0.2626,0.0,10,passed
 Powertrain control module.txt,304,0.2303,0.0005,4,passed
 www_csselectronics_com_pages_can-fd-flexible-data-rate-intro.txt,3042,0.2137,0.0001,15,passed
@@ -47,16 +49,16 @@ Time-Sensitive Networking.txt,6129,0.2721,0.0004,5,passed
 ref_4.pdf,2252,0.2926,0.0121,2,not_relevant
 Unified Diagnostic Services.txt,419,0.2482,0.0004,10,passed
 Vehicle bus.txt,950,0.2516,0.0019,10,passed
-ref_0.pdf,4049,0.2662,0.0013,4,passed
+ref_0.pdf,4972,0.2635,0.0053,0,not_relevant
 www_ni_com_en_shop_seamlessly-connect-to-third-party-devices.txt,3276,0.2839,0.0055,10,passed
 www_csselectronics_com_pages_can-dbc-file-database-intro.txt,5292,0.2184,0.0,13,passed
 Adaptive cruise control.txt,2745,0.2244,0.0004,4,passed
 www_csselectronics_com_pages_can-bus-simple-intro-tutorial.txt,5254,0.2227,0.0,18,passed
 Connected car.txt,3131,0.2884,0.0001,12,passed
-ref_1.pdf,17381,0.2422,0.009,4,passed
+ref_1.pdf,8671,0.2544,0.006,2,not_relevant
 Dedicated short-range communications.txt,511,0.1761,0.0022,3,passed
-ref_3.pdf,8671,0.2544,0.006,2,not_relevant
-ref_2.pdf,3442,0.2618,0.0029,4,passed
+ref_3.pdf,3442,0.2618,0.0029,4,passed
+ref_2.pdf,4049,0.2662,0.0013,4,passed
 Local Interconnect Network.txt,2796,0.2704,0.0004,4,passed
 Functional safety.txt,2077,0.2701,0.0011,6,passed
 SAE J1939.txt,539,0.2542,0.0,9,passed
@@ -71,6 +73,7 @@ FlexRay.txt,1160,0.2328,0.004,6,passed
 www_csselectronics_com_pages_obd2-pid-table-on-board-diagnos.txt,3429,0.0645,0.0001,4,low_prose
 Keyword Protocol 2000.txt,296,0.25,0.001,5,passed
 Vehicle-to-everything.txt,3198,0.2695,0.0002,5,passed
+Steer-by-wire.txt,758,0.2704,0.0004,2,not_relevant
 de_wikipedia_org_wiki_Controller_Area_Network.txt,4926,0.0183,0.0116,11,not_english
 Vehicular communication systems.txt,1457,0.2574,0.0001,4,passed
 Vehicle-to-grid.txt,3311,0.2507,0.0005,4,passed

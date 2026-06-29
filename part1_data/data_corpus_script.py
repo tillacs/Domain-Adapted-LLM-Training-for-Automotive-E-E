@@ -28,7 +28,7 @@ WIKIPEDIA_ARTICLES = [
     # Functional safety 
     "ISO 26262", "Automotive Safety Integrity Level", "Functional safety",
     # Diagnostics
-    "Unified Diagnostic Services", "On-board diagnostics", "OBD-II PIDs",
+    "Unified Diagnostic Services", "On-board diagnostics", "OBD-II", "OBD-II PIDs",
     "ISO 15765-2", "Keyword Protocol 2000", "XCP (protocol)",
     # ADAS & autonomous driving
     "Advanced driver-assistance system", "Self-driving car",
@@ -36,7 +36,7 @@ WIKIPEDIA_ARTICLES = [
     "Sensor fusion", "Lidar", "Radar",     # Sensor fusion bleibt drin → not_relevant-Demo
     # Safety & control systems
     "Anti-lock braking system", "Electronic stability control", "Airbag",
-    "Brake-by-wire", "Drive by wire", "Tire-pressure monitoring system",
+    "Brake-by-wire", "Drive by wire", "Steer-by-wire", "Tire-pressure monitoring system",
     # Connected, telematics & security
     "Vehicle-to-everything", "Vehicular communication systems",
     "Dedicated short-range communications", "Telematics", "Connected car",
@@ -45,7 +45,8 @@ WIKIPEDIA_ARTICLES = [
 ]
 
 WEB_URLS = [
-    # --- Bus systems & protocols ---
+    "https://www.siemens.com/en-us/technology/autosar/",
+    # Bus systems & protocols
     "https://www.csselectronics.com/pages/can-bus-simple-intro-tutorial",
     "https://www.csselectronics.com/pages/can-fd-flexible-data-rate-intro",
     "https://www.csselectronics.com/pages/can-bus-errors-intro-tutorial",
@@ -57,12 +58,14 @@ WEB_URLS = [
     "https://www.kvaser.com/about-can/higher-layer-protocols/j1939-introduction/",
     "https://www.ni.com/en/shop/seamlessly-connect-to-third-party-devices-and-supervisory-system/controller-area-network--can--overview.html",
     "https://www.ni.com/en/shop/seamlessly-connect-to-third-party-devices-and-supervisory-system/flexray-automotive-communication-bus-overview.html",
-    # --- Diagnostics ---
+    # Diagnostics
     "https://www.csselectronics.com/pages/obd2-explained-simple-intro",
     "https://www.csselectronics.com/pages/obd2-pid-table-on-board-diagnostics-j1979",
     "https://www.csselectronics.com/pages/uds-protocol-tutorial-unified-diagnostic-services",   
-    # --- German source → not_english-Demo ---
-    "https://de.wikipedia.org/wiki/Controller_Area_Network"
+    # German source
+    "https://de.wikipedia.org/wiki/Controller_Area_Network",
+    # PDF
+    "https://mediatum.ub.tum.de/doc/1638880/mth1hqzs56h0qnkny6syzdham.Disseration_Johannes_Eder_Bib.pdf"
 ]
 
 SEED_DOIS = [
@@ -73,14 +76,26 @@ SEED_DOIS = [
       "10.48550/arxiv.1703.08557",       # Ulbrich 2017 — functional system architecture for automated vehicles
   ]
 
-EE_KEYWORDS = ["autosar", "can bus", "ecu", "automotive", "e/e",
-               "powertrain", "adas", "iso 26262", "flexray", "lin bus",
-               "electronic control unit", "on-board diagnostic",
-               "functional safety", "asil", "some/ip",
-               "controller area network", "can fd", "canopen", "ethernet",
-               "diagnostic", "v2x", "vehicle-to", "advanced driver",
-               "driver-assistance", "tpms", "tire-pressure", "in-vehicle",
-               "ecall", "iso 11898", "time-sensitive", "obd", "j1939"]
+EE_KEYWORDS = [
+    # General domain
+    "automotive", "e/e",
+    # AUTOSAR & middleware
+    "autosar", "some/ip",
+    # Bus systems & in-vehicle networks
+    "can bus", "can fd", "controller area network", "canopen", "flexray",
+    "lin bus", "j1939", "iso 11898", "time-triggered", "time-sensitive networking",
+    "automotive ethernet", "audio video bridging", "in-vehicle",
+    # ECU architectures
+    "ecu", "electronic control unit", "powertrain",
+    # Functional safety
+    "iso 26262", "asil", "functional safety",
+    # Diagnostics
+    "on-board diagnostic", "obd",
+    # ADAS & autonomous driving
+    "adas", "advanced driver", "driver-assistance",
+    # Connected, telematics & security
+    "v2x", "vehicle-to", "ecall", "tpms", "tire-pressure",
+]
 
 STOPWORDS = {"the","a","an","of","and","to","in","is","for",
              "with","on","that","as","are","by","be","this","or"}
@@ -98,19 +113,22 @@ def fetch_wikipedia(articles, output_dir): # Fetch each article as plain text an
         (output_dir / f"{page.title}.txt").write_text(text, encoding="utf-8")
 
 
-def fetch_webpages(urls, output_dir): # Download each page, strip nav/scripts/footer, and save the body text
+def fetch_webpages(urls, output_dir): # Download each page; HTML → text, direct PDF → .pdf
     output_dir.mkdir(parents=True, exist_ok=True)
     for url in urls:
         try:
             response = requests.get(url, headers={"User-Agent": "Mozilla/5.0"}, timeout=15)
+            slug = url.split("//")[-1].replace("/", "_").replace(".", "_")[:60]
+            if response.content[:5] == b"%PDF-":                 # direct PDF link → let pypdf handle it
+                (output_dir / (slug + ".pdf")).write_bytes(response.content)
+                continue
             soup = BeautifulSoup(response.text, "html.parser")
             for tag in soup(["script", "style", "nav", "footer", "header"]):
                 tag.decompose()
             text = soup.get_text(separator="\n")
             lines = [l.strip() for l in text.splitlines()]
-            text = "\n".join(l for l in lines if l)   # remove blank lines
-            slug = url.split("//")[-1].replace("/", "_").replace(".", "_")
-            with open(output_dir / (slug[:60] + ".txt"), "w", encoding="utf-8") as f:
+            text = "\n".join(l for l in lines if l)
+            with open(output_dir / (slug + ".txt"), "w", encoding="utf-8") as f:
                 f.write(text)
         except Exception as e:
             print(f"Skipping {url}: {e}")
