@@ -5,7 +5,7 @@ The quality of the training corpus directly determines the quality of domain ada
 
 ## Why a Curated In-Domain Corpus
 
-General LLMs underrepresent automotive E/E text in two ways: a domain knowledge gap and an out-of-distribution formatting gap (see README). Closing them requires in-domain text that is dense in. automotive E/E terminology. This part assembles and filters such a corpus for use in CPT (Part 2).
+General LLMs underrepresent automotive E/E text in two ways: a domain knowledge gap and an out-of-distribution formatting gap (see README). Closing them requires in-domain text that is dense in automotive E/E terminology. This part assembles and filters such a corpus for use in CPT (Part 2).
 
 
 ## Corpus Construction
