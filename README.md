@@ -8,7 +8,7 @@ This project is an end-to-end demonstration of adapting a small open-source LLM 
 General-purpose language models are pretrained on broad data corpora where automotive E/E related data is structurally underrepresented. This creates two distinct gaps (McCormick 2025):
 
 #### Domain Knowledge Gap
-Many automotive E/E terms carry a different meaning than in general language: `bus` refers to a communication network, not a vehicle, and core domain concepts like `CAN` arbitration rules or `ASIL` classification are absent or sparse in general pretraining data. As a result, base models may produce plausible-sounding but factually incorrect answers.
+Many automotive E/E terms carry a different meaning than in general language: `bus` refers to a communication network, not a vehicle and core domain concepts like `CAN` arbitration rules or `ASIL` classification are absent or sparse in general pretraining data.
 
 #### Out-of-Distribution (OOD) Text Gap
 E/E documentation follows strict formatting conventions, such as hex-encoded `UDS` messages or `ARXML` schemas, that are rarely seen in web text. When format and style fall outside the model's training distribution, it might assign low probability to the tokens.
@@ -23,7 +23,7 @@ The project follows a **Base model → CPT → SFT → Evaluation** pipeline, wh
 - **CPT (Part 2)** continues next-token training on raw E/E text.
 - **SFT (Part 3)** then teaches the instruction-response format on top.
 
-The order is important: a few instruction pairs can teach a response format but cannot build domain knowledge (Zhou et al. 2023), so the knowledge has to come first from CPT. For the same reason the Base variant is used rather than the Instruct variant of the chosen model. Running CPT on unstructured text would degrade the instruction-following an Instruct model already has (McCormick 2025).
+The Base variant is used rather than the Instruct variant of the chosen model, because running CPT on unstructured text could degrade the instruction-following an instruct model already has (McCormick 2025).
 
 
 ## Overview
@@ -51,7 +51,7 @@ All steps use only public data and free compute.
 
 #### Why decoder-only?
 
-The goal is a generative E/E assistant that answers open questions, so the model has to generate. Decoder-only models are autoregressive and built for exactly that. An encoder model classifies or retrieves and cannot generate answers, so it does not fit open-ended Q&A.
+The goal is a generative E/E assistant that answers open questions, so the model has to generate. Decoder-only models are autoregressive and built for that. An encoder model classifies or retrieves and cannot generate open answers, so it does not fit open-ended Q&A.
 
 #### Why Llama-3.2-1B?
 
@@ -69,7 +69,7 @@ At 1.24B parameters the model fits a free Kaggle T4 (15 GB VRAM) and is availabl
 pip install -r requirements.txt
 ```
 
-**Parts 2–4 (notebooks):** run on Kaggle with a free T4 GPU. Each notebook installs its own dependencies in the first cell and pulls the corpus and instruction pairs from the project's GitHub repo, so no local setup is needed beyond a Kaggle account with GPU enabled.
+**Parts 2 and 3 (notebooks):** run on Kaggle with a free T4 GPU. Each notebook installs its own dependencies in the first cell and pulls the corpus and instruction pairs from the project's GitHub repo, so no local setup is needed beyond a Kaggle account with GPU enabled.
 
 
 ## Running the Notebooks
@@ -88,7 +88,7 @@ CPT_MODEL_PATH = "/kaggle/input/<cpt-notebook-slug>/cpt_merged"
 
 ## AI Assistance
 
-Claude Opus 4.8 (Anthropic) was used as a development assistant for research, debugging and scaling the data pipeline;
+Claude Opus 4.8 (Anthropic) was used as a development assistant for research, debugging and scaling.
 
 ## Repository Structure
 
@@ -99,8 +99,8 @@ Domain-Adapted-LLM-Training-for-Automotive-E-E/
 ├── part1_data/
 │   ├── corpus_strategy.md          # data corpus strategy write-up
 │   ├── data_corpus_script.py       # corpus collection + filtering + chunking script
-│   └── data_corpus/                # script output: raw/ texts + train.json / val.json
-│       ├── train.json              # tokenized training chunks (CPT input)
+│   └── data_corpus/                # script output: train.json + val.json + overview
+│       ├── train.json              # tokenized training chunks
 │       ├── val.json                # tokenized validation chunks
 │       └── corpus_stats.csv        # per-document metrics + filter status
 ├── part2_cpt/
@@ -108,15 +108,13 @@ Domain-Adapted-LLM-Training-for-Automotive-E-E/
 │   └── cpt_notebook.ipynb          # CPT training notebook (Kaggle T4)
 ├── part3_sft/
 │   ├── sft_approach.md             # SFT approach write-up
-│   ├── instruction_pairs.jsonl     # instruction/response pairs
+│   ├── instruction_pairs.jsonl     # 20 instruction/response pairs
 │   └── sft_notebook.ipynb          # SFT training notebook (Kaggle T4)
 └── part4_eval/
-    ├── eval_plan.md                # evaluation plan + eval questions
-    └── eval_notebook.ipynb         # evaluation notebook (Base vs CPT vs CPT+SFT)
+    └── eval_plan.md                # evaluation plan + eval questions
 ```
 
 
 ## References
 
-- McCormick, C. (2025). *Continuing Pre-Training on Raw Text.* mccormickml.com.
-- Zhou, C. et al. (2023). *LIMA: Less Is More for Alignment.* arXiv:2305.11206.
+- McCormick, C. (2025). *Continuing Pre-Training on Raw Text.* mccormickml.com/2025/01/18/continuing-pre-training-on-raw-text/

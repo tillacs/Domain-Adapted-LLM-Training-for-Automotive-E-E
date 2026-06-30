@@ -5,7 +5,7 @@ The quality of the training corpus directly determines the quality of domain ada
 
 ## Why a Curated In-Domain Corpus
 
-General LLMs underrepresent automotive E/E text in two ways: a domain knowledge gap and an out-of-distribution formatting gap (see README). Closing them requires in-domain text that is dense in E/E terminology. This part assembles and filters such a corpus for use in CPT (Part 2).
+General LLMs underrepresent automotive E/E text in two ways: a domain knowledge gap and an out-of-distribution formatting gap (see README). Closing them requires in-domain text that is dense in. automotive E/E terminology. This part assembles and filters such a corpus for use in CPT (Part 2).
 
 
 ## Corpus Construction
@@ -15,13 +15,13 @@ Usable automotive E/E text spans several source types, which differ in depth, fo
 - **Reference articles:** Wikipedia gives broad conceptual coverage, clean prose and is openly licensed.
 - **Academic literature:** Academic papers offer high technical depth but access is inconsistent (much is paywalled).
 - **Community & code:** automotive GitHub repositories, ARXML examples and technical forums are noisy and license-mixed.
-- **Vendor documentation:** tool and semiconductor vendors (e.g. CSS Electronics, NXP) publish freely accessible tutorials, reference manuals and datasheets, which are precise and domain-specific, but copyrighted.
-- **Standards & specifications:** the AUTOSAR specs and ISO 26262, for example, are authoritative, but paywalled and formatting-heavy.
-- **OEM & supplier documentation:** requirements, ARXML models and test specifications are the richest in-domain text, but proprietary.
+- **Vendor documentation:** tool and semiconductor vendors (e.g. CSS Electronics, NXP) publish freely accessible tutorials, reference manuals and datasheets, which are precise and domain-specific, but often copyrighted.
+- **Standards & specifications:** the AUTOSAR specs and ISO 26262, for example, are authoritative, but  paywalled, copyrighted and formatting-heavy.
+- **OEM & supplier documentation:** requirements, ARXML models and test specifications are rich in-domain text, but proprietary.
 
 This toy setup uses the freely accessible, machine-parsable sources for demonstration: Wikipedia, vendor tutorials (e.g. CSS Electronics) and open-access papers. The most valuable E/E text, standards and proprietary OEM data, is excluded by the public-data constraint (see Limitations).
 
-The pipeline also demonstrates a possible citation-driven expansion together with its limitations. Starting from handpicked seed papers (loaded via DOI), it downloads those references that are openly accessible via OpenAlex. This shows the corpus can be grown automatically from a few curated seeds instead of finding every source by hand.
+The pipeline also demonstrates a possible citation-driven expansion together with its limitations. Starting from handpicked seed papers (loaded via DOI), it downloads those references that are openly accessible via *OpenAlex*. This shows the corpus can be grown automatically from a few curated seeds instead of finding every source by hand.
 
 
 ## Preprocessing Pipeline
@@ -110,17 +110,17 @@ A per-document breakdown (word count, stop-word ratio, non-ASCII ratio, E/E-keyw
 
 **Citation crawl:** Of 130 unique references resolved across the five seeds, 19 had a direct open-access PDF link and only 7 returned an actual PDF file. This demonstrates the mechanism while showing it does not scale in the toy setup.
 
-**Seed papers:** Bock (2016, automotive SW taxonomy); Cuomo (2023, RISC-V ECU platform); Mauser (2024, E/E centralization); Salay (2017, ISO 26262 / functional safety); Ulbrich (2017, functional system architecture for automated vehicles).
+**Seed papers:** Bock (automotive software taxonomy), Cuomo (RISC-V ECU platform), Mauser (E/E architecture centralization), Salay (functional safety), Ulbrich (system architecture for automated driving).
 
 
 ## Limitations
 
-This toy prototype demonstrates the full corpus construction pipeline from source fetching through tokenized chunking, but several gaps separate it from a production-scale training corpus. 
+This toy prototype demonstrates the full corpus construction pipeline from source fetching through tokenized chunking, but several gaps separate the outcome from a production-scale training corpus. 
 
 | Limitation | Impact | Production fix |
 |---|---|---|
-| Small data corpus (~430k tokens, ~245 chunks) | Perplexity reduction is measurable but the model does not get enough exposure to the automotive E/E concepts to deliver production scale results. | Expand the corpus with more curated sources (additional Wikipedia/web pages, internal datasets) and where licensing allows, automated reference following. |
-| Source licensing | Publicly accessible sources vary in license and some cannot be freely reused at production scale. | Restrict to permissively-licensed sources, obtain license clearance or use in-house data. |
+| Small data corpus (~430k tokens, ~245 chunks) | The model will not get enough exposure to the automotive E/E concepts to deliver production scale results. | Expand the corpus with more curated sources (additional Wikipedia/web pages, internal datasets) and where licensing allows, automated reference following. |
+| Source licensing | Publicly accessible sources vary in license and some cannot be freely reused at production scale. | Obtain license clearance or use in-house data. |
 | Citation-following hard to scale | Most cited papers are paywalled, open-access PDF links are inconsistent, and APIs are rate-limited. | Get proper access to the papers through publisher APIs or subscriptions. |
 | Image and table loss (pypdf) | A lot of important content that distinguishes automotive E/E text from general prose is never seen by the model, because pypdf silently drops all non-text content. | Use a richer extraction pipeline: convert tables to structured Markdown and add a vision model in preprocessing to caption images into text. |
 | Tokenizer vocabulary mismatch | Domain-specific notation may be split suboptimally and into many fragments. This lengthens sequences and spreads a term's meaning across many token positions. | Evaluate whether tokenizer extension improves downstream perplexity and task performance. |
@@ -132,7 +132,7 @@ This toy prototype demonstrates the full corpus construction pipeline from sourc
 ## References
 
 - Rae, J. W. et al. (2021). *Scaling Language Models: Methods, Analysis & Insights from Training Gopher.* arXiv:2112.11446
-- Vaswani, A. et al. (2017). *Attention Is All You Need.* NeurIPS 2017. arXiv:1706.03762
 - Lee, K. et al. (2022). *Deduplicating Training Data Makes Language Models Better.* ACL 2022. arXiv:2107.06499
+- Vaswani, A. et al. (2017). *Attention Is All You Need.* NeurIPS 2017. arXiv:1706.03762
 - Han, D. & Han, M. (2024). *Continued Pretraining with Unsloth.* unsloth.ai/blog/contpretraining.
-- Hewitt, J. (2021). *Initializing New Word Embeddings for Pretrained Language Models.* cs.columbia.edu/~johnhew (web note).
+- Hewitt, J. (2021). *Initializing New Word Embeddings for Pretrained Language Models.* cs.columbia.edu/~johnhew/vocab-expansion.html.
